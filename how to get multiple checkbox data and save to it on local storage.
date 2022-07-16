@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>how to get multiple checkbox data and save to it on local storage.</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <form action="#" method="POST">
+  <input type="checkbox" class="myclass" name="favorite1" id="like">like<br>
+<input type="checkbox" class="myclass" name="favorite1" id="like1">like1<br>
+<input type="checkbox" class="myclass" name="favorite1" id="like2">like2<br>
+
+</div> 
+
+<script>
+	$(document).ready(function(){
+
+   $('.myclass').change(function () {
+    var favs = [];
+       $('.myclass:checked').each(function () {
+
+        //fav=$(this).val();
+        fav = $(this).attr('id');
+
+        favs.push(fav);
+
+       });
+       localStorage.setItem("favorites", JSON.stringify(favs));
+
+     var get_data=localStorage.getItem("favorites");
+     console.log(JSON.parse(get_data));
+
+   });
+
+});
+
+</script>
